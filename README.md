@@ -17,17 +17,21 @@ Languages Used:
 
 The project is built using the core three languages of web development:
 
-HTML
-CSS3
-JavaScript
+HTML,
+CSS3,
+JavaScript,
 
 Key Features
 
-Responsive Design.
-Full-Screen Entry.
-Smooth Scrolling.
-Asynchronous Interaction.
-Development Progress
+Responsive Design, 
+
+Full-Screen Entry, 
+
+Smooth Scrolling, 
+
+Asynchronous Interaction, 
+
+Development Progress.
 
 This repository is used to track the step-by-step progress of the development.
 Current Status: Initializing project structure and core styling.
