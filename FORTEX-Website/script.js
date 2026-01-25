@@ -97,4 +97,149 @@ function scrollToSection(sectionId) {
             top: offsetTop,
             behavior: 'smooth'
         });
+    }   // Close mobile menu if open
+    if (isMenuOpen) {
+        toggleMobileMenu();
     }
+    
+    // Update active section
+    updateActiveSection(sectionId);
+}
+
+// Update active navigation link
+function updateActiveSection(sectionId) {
+    activeSection = sectionId;
+    
+    // Update desktop menu
+    const desktopLinks = document.querySelectorAll('#desktop-menu .nav-link');
+    desktopLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-section') === sectionId) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Setup scrolllistener for navigation highlighting
+function setupScrollListener() {
+    window.addEventListener('scroll', function() {
+        const sections = ['home', 'services', 'gallery', 'contact'];
+        const scrollPosition = window.scrollY + 100;
+
+        for (const section of sections) {
+            const element = document.getElementById(section);
+            if (element) {
+                const offsetTop = element.offsetTop;
+                const offsetHeight = element.offsetHeight;
+                
+                if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                    if (activeSection !== section) {
+                        updateActiveSection(section);
+                    }
+                    break;
+                }
+            }
+        }
+    });
+}
+// Setup intersection observer for animations
+function setupIntersectionObserver() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements after they're created
+    setTimeout(() => {
+        const elementsToObserve = document.querySelectorAll('.bg-white, .gallery-item, h2');
+        elementsToObserve.forEach(el => observer.observe(el));
+    }, 100);
+}
+
+// Populate services section
+function populateServices() {
+    const servicesGrid = document.getElementById('services-grid');
+    if (!servicesGrid) return;
+    
+    servicesGrid.innerHTML = '';
+    
+    services.forEach((service, index) => {
+        const serviceCard = document.createElement('div');
+        serviceCard.className = 'bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300 group hover:-translate-y-1';
+        serviceCard.innerHTML = `
+            <div class="text-center mb-4">
+                <div class="mb-4 group-hover:scale-110 transition-transform duration-300">
+                    ${createIcon(service.icon, 'w-12 h-12 text-orange-600 mx-auto')}
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">${service.title}</h3>
+            </div>
+            <div>
+                <p class="text-base text-gray-600 text-center">${service.description}</p>
+            </div>
+        `;
+        
+        servicesGrid.appendChild(serviceCard);
+    });
+}
+
+// Populate gallery section
+function populateGallery() {
+    const galleryGrid = document.getElementById('gallery-grid');
+    if (!galleryGrid) return;
+    
+    galleryGrid.innerHTML = '';
+    
+    galleryImages.forEach((image, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'gallery-item group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300';
+        galleryItem.innerHTML = `
+            <img src="${image.src}" alt="${image.title}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <h3 class="text-white text-lg font-semibold">${image.title}</h3>
+            </div>
+        `;
+        
+        galleryGrid.appendChild(galleryItem);
+    });
+}
+
+// Handle form submission
+function handleFormSubmit(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const phone = formData.get('phone');
+    const message = formData.get('message');
+    
+    // Simple form validation
+    if (!name || !email || !message) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Veuillez entrer une adresse email valide.');
+        return;
+    }
+    
+    // Simulate form submission
+    alert('Merci pour votre demande ! Nous vous contacterons bientôt.');
+    
+    // Reset form
+    event.target.reset();
+    
+    // In a real application, you would send the data to a server
+    console.log('Form submitted:', { name, email, phone, message });
+}
