@@ -38,14 +38,14 @@ const services = [
     }
 ];
 
-// images (better we use Unsplash construction images)
+// Gallery images data (using Unsplash construction images)
 const galleryImages = [
-    { src: "https://images.unsplash.com/photo-1632143697508-2c49aadff5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Rénovation Complète" },
+    { src: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Rénovation Complète" },
     { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Extension Moderne" },
     { src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Rénovation Culturelle" },
     { src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Transformation Résidentielle" },
     { src: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Rénovation Commerciale" },
-    { src: "https://images.unsplash.com/photo-1604589977707-d161da2edb0f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Revêtement Sol" }
+    { src: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", title: "Revêtement Sol" }
 ];
 
 // Initialize the website when DOM is loaded
@@ -98,7 +98,8 @@ function scrollToSection(sectionId) {
             behavior: 'smooth'
         });
     }
-     // Close mobile menu if open
+    
+    // Close mobile menu if open
     if (isMenuOpen) {
         toggleMobileMenu();
     }
@@ -121,7 +122,7 @@ function updateActiveSection(sectionId) {
     });
 }
 
-// Setup scrolllistener for navigation highlighting
+// Setup scroll listener for navigation highlighting
 function setupScrollListener() {
     window.addEventListener('scroll', function() {
         const sections = ['home', 'services', 'gallery', 'contact'];
@@ -143,6 +144,7 @@ function setupScrollListener() {
         }
     });
 }
+
 // Setup intersection observer for animations
 function setupIntersectionObserver() {
     const observerOptions = {
@@ -244,6 +246,3 @@ function handleFormSubmit(event) {
     // In a real application, you would send the data to a server
     console.log('Form submitted:', { name, email, phone, message });
 }
-
-
-
