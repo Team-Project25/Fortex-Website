@@ -4,177 +4,359 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FORTEX - Entreprise de Construction à Łódź, Pologne</title>
-    <meta name="description" content="FORTEX - Votre partenaire de confiance pour tous vos travaux de construction et rénovation à Łódź, Pologne.">
+    <meta name="description" content="FORTEX - Votre partenaire de confiance pour tous vos travaux de construction, rénovation, plafonnage, carrelage, toiture et plus à Łódź, Pologne.">
     <meta name="author" content="FORTEX">
-
+    <meta name="keywords" content="construction, rénovation, plafonnage, carrelage, toiture, Łódź, Pologne, FORTEX">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-white">
+<body>
+    <div class="min-h-screen bg-white">
+        <!-- Navigation -->
+        <nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span class="text-2xl font-bold text-gray-900">FORTEX</span>
+                    </div>
 
-<!-- Navigation -->
-<nav class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
-    <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-        <h1 class="text-2xl font-bold text-gray-900">FORTEX</h1>
+                    <!-- Desktop Menu -->
+                    <div class="hidden md:flex items-center space-x-8" id="desktop-menu">
+                        <button onclick="scrollToSection('home')" class="nav-link active" data-section="home">Accueil</button>
+                        <button onclick="scrollToSection('services')" class="nav-link" data-section="services">Services</button>
+                        <button onclick="scrollToSection('gallery')" class="nav-link" data-section="gallery">Galerie</button>
+                        <button onclick="scrollToSection('contact')" class="nav-link" data-section="contact">Contact</button>
+                    </div>
 
-        <div class="hidden md:flex space-x-6">
-            <a href="#home">Accueil</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </div>
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-md text-gray-700 hover:text-orange-600" id="mobile-menu-btn">
+                        <svg class="w-6 h-6" id="menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg class="w-6 h-6 hidden" id="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="md:hidden bg-white border-t border-gray-200 hidden" id="mobile-menu">
+                <div class="px-4 py-2 space-y-2">
+                    <button onclick="scrollToSection('home')" class="mobile-nav-link">Accueil</button>
+                    <button onclick="scrollToSection('services')" class="mobile-nav-link">Services</button>
+                    <button onclick="scrollToSection('gallery')" class="mobile-nav-link">Galerie</button>
+                    <button onclick="scrollToSection('contact')" class="mobile-nav-link">Contact</button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="relative min-h-screen flex items-center justify-center">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url(https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80)">
+                <div class="absolute inset-0 bg-black/50"></div>
+            </div>
+            
+            <div class="relative z-10 text-center text-white px-4">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">FORTEX</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+                    Vos travaux, notre métier !
+                </p>
+                <button onclick="scrollToSection('contact')" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 text-lg rounded-md transition-colors duration-300 font-medium">
+                    Contact
+                </button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md text-center p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="mb-4">
+                            <svg class="w-16 h-16 text-orange-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                            </svg>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Nous sommes créatifs</h3>
+                        </div>
+                        <div>
+                            <p class="text-base text-gray-600">
+                                L'équipe de FORTEX est créative, ingénieuse et qualifiée. La rapidité et l'efficacité sont les principaux atouts de nos acteurs.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md text-center p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="mb-4">
+                            <svg class="w-16 h-16 text-orange-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            </svg>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Besoin de notre aide ?</h3>
+                        </div>
+                        <div>
+                            <p class="text-base text-gray-600">
+                                Nos compétences professionnelles se résument à des œuvres de plafonnage, cimentage, chape, carrelage, marbre, pierre naturelle, toiture, étanchéité, menuiserie, vitrerie à l'installation de chauffage, climatisation, sanitaire et gaz.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md text-center p-6 hover:shadow-lg transition-shadow duration-300">
+                        <div class="mb-4">
+                            <svg class="w-16 h-16 text-orange-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">Nous aimons vous aider !</h3>
+                        </div>
+                        <div>
+                            <p class="text-base text-gray-600">
+                                Notre équipe est là pour vous aider aux besoins les plus urgents. Appelez-nous dès maintenant !
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Découvrez notre gamme complète de services de construction et de rénovation
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+                    <!-- Services will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stats -->
+        <section class="py-20 bg-orange-600 text-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold mb-4">Nos Succès</h2>
+                    <p class="text-xl">Nous vous apportons notre meilleur depuis plus de 10 ans !</p>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-bold mb-2">10+</div>
+                        <div class="text-lg">Années d'expérience</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">500+</div>
+                        <div class="text-lg">Projets réalisés</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">100%</div>
+                        <div class="text-lg">Clients satisfaits</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold mb-2">24/7</div>
+                        <div class="text-lg">Support disponible</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Galerie</h2>
+                    <p class="text-xl text-gray-600">Découvrez quelques-uns de nos projets réalisés</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    <!-- Gallery items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-4">Contact</h2>
+                    <p class="text-xl text-gray-600">Contactez-nous, nous sommes là pour vous !</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-y-8">
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900 flex items-center space-x-3 mb-2">
+                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <span>Notre adresse</span>
+                                </h3>
+                            </div>
+                            <div>
+                                <p class="text-gray-700">
+                                    ul. Piotrkowska 123<br>
+                                    90-001 Łódź<br>
+                                    Pologne
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900 flex items-center space-x-3 mb-2">
+                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <span>Email</span>
+                                </h3>
+                            </div>
+                            <div>
+                                <a href="mailto:contact@fortex.pl" class="text-orange-600 hover:text-orange-700 transition-colors">
+                                    contact@fortex.pl
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg shadow-md p-6">
+                            <div class="mb-4">
+                                <h3 class="text-xl font-semibold text-gray-900 flex items-center space-x-3 mb-2">
+                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                    <span>Téléphone</span>
+                                </h3>
+                            </div>
+                            <div>
+                                <a href="tel:+48123456789" class="text-orange-600 hover:text-orange-700 transition-colors">
+                                    +48 123 456 789
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-100 rounded-lg p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Demande de devis</h3>
+                        <form class="space-y-4" onsubmit="handleFormSubmit(event)">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Nom complet
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
+                                    placeholder="Votre nom"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Email
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
+                                    placeholder="votre@email.com"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Téléphone
+                                </label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
+                                    placeholder="+48 123 456 789"
+                                />
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">
+                                    Message
+                                </label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="4"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all"
+                                    placeholder="Décrivez votre projet..."
+                                    required
+                                ></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-3 rounded-md font-medium transition-colors duration-300">
+                                Envoyer la demande
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-2xl font-bold">FORTEX</span>
+                        </div>
+                        <p class="text-gray-400">
+                            Votre partenaire de confiance pour tous vos projets de construction et de rénovation à Łódź, Pologne.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Services</h3>
+                        <ul class="space-y-2 text-gray-400">
+                            <li>Plafonnage & Cimentage</li>
+                            <li>Carrelage & Marbre</li>
+                            <li>Toiture & Étanchéité</li>
+                            <li>Menuiserie & Vitrerie</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                        <div class="space-y-2 text-gray-400">
+                            <p>ul. Piotrkowska 123, 90-001 Łódź</p>
+                            <p>+48 123 456 789</p>
+                            <p>contact@fortex.pl</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 FORTEX. Tous droits réservés.</p>
+                </div>
+            </div>
+        </footer>
     </div>
-</nav>
 
-<!-- Hero Section -->
-<section id="home" class="min-h-screen flex items-center justify-center text-center text-white"
-    style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5'); background-size:cover;">
-    <div class="bg-black/60 p-10 rounded">
-        <h2 class="text-5xl font-bold mb-4">FORTEX</h2>
-        <p class="text-xl mb-6">Vos travaux, notre métier</p>
-        <a href="#contact" class="bg-orange-600 px-6 py-3 rounded text-white">
-            Contactez-nous
-        </a>
-    </div>
-</section>
-<section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-4">
-        <div class="grid md:grid-cols-3 gap-8">
-
-            <div class="bg-white rounded-lg shadow-md text-center p-6">
-                <h3 class="text-xl font-semibold mb-3 text-gray-900">
-                    Nous sommes créatifs
-                </h3>
-                <p class="text-gray-600">
-                    L’équipe FORTEX est composée de professionnels créatifs et efficaces,
-                    spécialisés dans la construction et la rénovation.
-                </p>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md text-center p-6">
-                <h3 class="text-xl font-semibold mb-3 text-gray-900">
-                    Savoir-faire professionnel
-                </h3>
-                <p class="text-gray-600">
-                    Nous réalisons des travaux de plafonnage, carrelage, cimentage,
-                    toiture et rénovation complète.
-                </p>
-            </div>
-
-            <div class="bg-white rounded-lg shadow-md text-center p-6">
-                <h3 class="text-xl font-semibold mb-3 text-gray-900">
-                    Toujours disponibles
-                </h3>
-                <p class="text-gray-600">
-                    Notre équipe est prête à vous accompagner et à répondre
-                    rapidement à vos besoins.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Services Section -->
-<section id="services" class="py-20">
-    <div class="container mx-auto px-4">
-
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">
-                Nos Services
-            </h2>
-            <p class="text-gray-600 text-lg">
-                Une large gamme de services pour vos projets
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <div class="border rounded-lg p-6 text-center">
-                <h3 class="text-xl font-semibold mb-2">Construction</h3>
-                <p class="text-gray-600">
-                    Construction de bâtiments solides et durables.
-                </p>
-            </div>
-
-            <div class="border rounded-lg p-6 text-center">
-                <h3 class="text-xl font-semibold mb-2">Rénovation</h3>
-                <p class="text-gray-600">
-                    Rénovation intérieure et extérieure complète.
-                </p>
-            </div>
-
-            <div class="border rounded-lg p-6 text-center">
-                <h3 class="text-xl font-semibold mb-2">Carrelage</h3>
-                <p class="text-gray-600">
-                    Pose professionnelle de carrelage et finitions.
-                </p>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact" class="py-20 bg-gray-900 text-white">
-    <div class="container mx-auto px-4 max-w-3xl text-center">
-
-        <h2 class="text-4xl font-bold mb-6">
-            Contactez-nous
-        </h2>
-
-        <p class="mb-10 text-gray-300">
-            Vous avez un projet ? N'hésitez pas à nous contacter.
-        </p>
-
-        <form class="space-y-6">
-            <input
-                type="text"
-                placeholder="Votre nom"
-                class="w-full p-3 rounded text-gray-900"
-                required
-            />
-
-            <input
-                type="email"
-                placeholder="Votre email"
-                class="w-full p-3 rounded text-gray-900"
-                required
-            />
-
-            <textarea
-                placeholder="Votre message"
-                rows="5"
-                class="w-full p-3 rounded text-gray-900"
-                required
-            ></textarea>
-
-            <button
-                type="submit"
-                class="bg-orange-600 px-8 py-3 rounded text-white font-semibold hover:bg-orange-700">
-                Envoyer
-            </button>
-        </form>
-
-    </div>
-</section>
-
-
-<footer class="bg-black text-gray-400 py-6 text-center">
-    <p>
-        © 2025 FORTEX — Construction & Rénovation
-    </p>
-    <p class="text-sm mt-2">
-        HTML structure & layout: Hanane
-    </p>
-</footer>
-
-
-<script src="script.js"></script>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
